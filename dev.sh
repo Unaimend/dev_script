@@ -1,10 +1,14 @@
-mkdir src
-mkdir include
+
 
 echo "Pls enter a project name"
 read -p "Enter: " name
 name=${name:}
 echo $name
+mkdir $name
+cd $name
+
+mkdir src
+mkdir include
 
 echo "
 /*************************
