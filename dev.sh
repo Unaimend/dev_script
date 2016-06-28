@@ -1,5 +1,11 @@
 mkdir src
 mkdir include
+
+echo "Pls enter a project name"
+read -p "Enter: " name
+name=${name:}
+echo $name
+
 echo "
 /*************************
 *Author: 	Thomas Dost
@@ -12,14 +18,14 @@ echo "
 #include <iostream>
 int main(int argc, char** argv)
 {
-	std::cout << \"Hello, World\" << std::endl;
+	std::cout << \"Hello, $name\" << std::endl;
 }
 " >> src/main.cpp
 
 
 echo "
 cmake_minimum_required(VERSION 2.8.9)
-project (exec)
+project ($name)
 SET(CMAKE_CXX_FLAGS \"-std=c++14 -O0\")
 include_directories(include)
 
@@ -33,7 +39,7 @@ include_directories(include)
 
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES \"src/*.cpp\")
-add_executable(exec \${SOURCES})
+add_executable($name \${SOURCES})
 " >> CMakeLists.txt
 
 cmake .
