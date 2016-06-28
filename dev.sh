@@ -1,9 +1,15 @@
-
-
-echo "Pls enter a project name"
-read -p "Enter: " name
-name=${name:}
-echo $name
+if (( "$#" == 0 )) 
+	then 
+		
+		echo "Pls enter a project name"
+		read -p "Enter: " name
+		name=${name}
+	else
+		#echo "YAY"
+		#echo $1
+		name=${1}
+fi
+#echo $name
 mkdir $name
 cd $name
 
@@ -83,3 +89,5 @@ echo "
 "	>> $name".sublime-project"
 
 sublime $name".sublime-project" 
+
+exit 1
