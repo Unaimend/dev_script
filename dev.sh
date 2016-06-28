@@ -59,6 +59,7 @@ echo "
 		{
 			\"path\": \"./include\",
 			\"path\": \"./src\",
+			\"path\": \".\",
 			//"file_exclude_patterns": 
 			//[
 
