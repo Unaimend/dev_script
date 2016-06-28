@@ -42,5 +42,39 @@ file(GLOB SOURCES \"src/*.cpp\")
 add_executable($name \${SOURCES})
 " >> CMakeLists.txt
 
+
+
 cmake .
 make
+echo "
+{
+	\"build_systems\":
+	[
+		{
+			
+		}
+	],
+	\"folders\":
+	[
+		{
+			\"path\": \"./include\",
+			\"path\": \"./src\",
+			//"file_exclude_patterns": 
+			//[
+
+			//]
+		},
+		// {
+		// 	"path": "Kapitel"
+
+		// }
+	],
+	\"settings\":
+	{
+		\"tab_size\": 4
+	}
+}
+
+"	>> $name".sublime-project"
+
+sublime $name".sublime-project" 
