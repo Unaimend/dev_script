@@ -1,3 +1,6 @@
+#Author: Thomas Dost
+
+
 if (( "$#" == 0 )) 
 	then 
 		
