@@ -44,8 +44,8 @@ echo "
 " >> html/index.html
 
 
-echo"
-alert(\"Hello World\")
+echo "\
+alert(\"Hello World\")\
 " >> javascript/index.js
 
 
