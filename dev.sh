@@ -1,5 +1,10 @@
 #Author: Thomas Dost
+#falls kein Projektname angegeben ist wird das erste Argument zum Projektnamen.
 
+
+
+# http://www.sfml-dev.org/files/SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
+sfml="false"
 
 if (( "$#" == 0 )) 
 	then 
@@ -12,13 +17,22 @@ if (( "$#" == 0 ))
 		#echo $1
 		name=${1}
 fi
+
+if (( "$@" == "-sfml" ))
+then
+    wget http://www.sfml-dev.org/files/SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip 
+    $sfml = true;
+else
+    echo "NO"
+fi
+
 #echo $name
 mkdir $name
 cd $name
 
 mkdir src
 mkdir include
-
+mkdir lib
 echo "
 /*************************
 *Author: 	Thomas Dost
@@ -92,5 +106,23 @@ echo "
 "	>> $name".sublime-project"
 
 sublime $name".sublime-project" 
+
+if (("$sfml" == "true"))
+then
+	cd ..
+	unzip SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
+    rm -r SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
+    mv SFML-2.4.0 $name
+    cd $name/SFML-2.4.0
+    mv include/* ../include/
+    mv lib/*	../lib/
+
+    echo "SFML was succesfully downloaded"
+else
+	echo "Failure"
+fi
+
+
+# http://www.sfml-dev.org/files/SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
 
 exit 1
