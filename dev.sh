@@ -37,6 +37,41 @@ mkdir lib
 
 if (("$sfml" == "true"))
 then
+
+	echo "
+/*************************
+*Author: 	Thomas Dost
+*Purpose:	
+*Date:
+*Changelog:	
+*Todo:
+**************************/
+
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+int main()
+{
+    // Create the main window
+    sf::RenderWindow window(sf::VideoMode(800, 600), \"SFML window\");
+    // Start the game loop
+    while (window.isOpen())
+    {
+        // Process events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Close window: exit
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        // Clear screen
+        window.clear();
+        // Update the window
+        window.display();
+    }
+    return EXIT_SUCCESS;
+}
+" >> src/main.cpp
 	echo "SFML main"
 else
 echo "
@@ -57,7 +92,29 @@ int main(int argc, char** argv)
 echo "Default cpp main"
 fi
 
+if (("$sfml" == "true"))
+then
+	
+echo "
+cmake_minimum_required(VERSION 2.8.9)
+project ($name)
+SET(CMAKE_CXX_FLAGS \"-std=c++14 -O0\")
+include_directories(include)
 
+
+
+# For the shared library:
+set ( PROJECT_LINK_LIBS libsfml-graphics.dylib libsfml-window.dylib libsfml-system.dylib)
+link_directories( .l/lib/)
+
+#However, the file(GLOB...) allows for wildcard additions:
+file(GLOB SOURCES \"src/*.cpp\")
+add_executable($name \${SOURCES})
+target_link_libraries($name \${PROJECT_LINK_LIBS} )
+" >> CMakeLists.txt
+
+	echo "SFML CMake"
+else
 
 echo "
 cmake_minimum_required(VERSION 2.8.9)
@@ -76,8 +133,10 @@ include_directories(include)
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES \"src/*.cpp\")
 add_executable($name \${SOURCES})
+target_link_libraries(libtest \${PROJECT_LINK_LIBS} )
 " >> CMakeLists.txt
-
+echo "cpp default cmake"
+fi
 
 
 cmake .
