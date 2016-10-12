@@ -1,9 +1,9 @@
 #Author: Thomas Dost
 #falls kein Projektname angegeben ist wird das erste Argument zum Projektnamen.
 
+#TODO: git, lua
 
 
-# http://www.sfml-dev.org/files/SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
 sfml="false"
 
 if (( "$#" == 0 )) 
@@ -122,18 +122,9 @@ project ($name)
 SET(CMAKE_CXX_FLAGS \"-std=c++14 -O0\")
 include_directories(include)
 
-
-
-#For the shared library:
-#set ( PROJECT_LINK_LIBS libsfml-graphics.so libsfml-window.so libsfml-system.so liblua.a)
-#link_directories( /usr/lib/x86_64-linux-gnu/)
-#link_directories( ~/dev/cpp/sfml/Engine/lib/lua)
-
-
-#However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES \"src/*.cpp\")
 add_executable($name \${SOURCES})
-target_link_libraries(libtest \${PROJECT_LINK_LIBS} )
+# target_link_libraries(libtest \${PROJECT_LINK_LIBS} )
 " >> CMakeLists.txt
 echo "cpp default cmake"
 fi
