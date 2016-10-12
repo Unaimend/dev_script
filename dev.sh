@@ -33,6 +33,12 @@ cd $name
 mkdir src
 mkdir include
 mkdir lib
+
+
+if (("$sfml" == "true"))
+then
+	echo "SFML main"
+else
 echo "
 /*************************
 *Author: 	Thomas Dost
@@ -48,6 +54,9 @@ int main(int argc, char** argv)
 	std::cout << \"Hello, $name\" << std::endl;
 }
 " >> src/main.cpp
+echo "Default cpp main"
+fi
+
 
 
 echo "
@@ -110,8 +119,8 @@ sublime $name".sublime-project"
 if (("$sfml" == "true"))
 then
 	cd ..
-	tar xf SFML-2.4.0-osx-clang.tar
-    rm  SFML-2.4.0-osx-clang.tar
+	tar xf SFML-2.4.0-osx-clang.tar.gz
+    rm  SFML-2.4.0-osx-clang.tar.gz
     mv SFML-2.4.0-osx-clang $name
     cd $name/SFML-2.4.0-osx-clang
     mv include/* ../include/
