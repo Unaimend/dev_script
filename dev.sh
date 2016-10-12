@@ -20,7 +20,7 @@ fi
 
 if (( "$@" == "-sfml" ))
 then
-    wget http://www.sfml-dev.org/files/SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip 
+    wget http://www.sfml-dev.org/files/SFML-2.4.0-osx-clang.tar.gz 
     $sfml = true;
 else
     echo "NO"
@@ -110,10 +110,10 @@ sublime $name".sublime-project"
 if (("$sfml" == "true"))
 then
 	cd ..
-	unzip SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
-    rm -r SFML-2.4.0-windows-gcc-4.9.2-tdm-64-bit.zip
-    mv SFML-2.4.0 $name
-    cd $name/SFML-2.4.0
+	tar xf SFML-2.4.0-osx-clang.tar
+    rm  SFML-2.4.0-osx-clang.tar
+    mv SFML-2.4.0-osx-clang $name
+    cd $name/SFML-2.4.0-osx-clang
     mv include/* ../include/
     mv lib/*	../lib/
 
