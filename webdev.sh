@@ -8,8 +8,6 @@ if (( "$#" == 0 ))
 		read -p "Enter: " name
 		name=${name}
 	else
-		#echo "YAY"
-		#echo $1
 		name=${1}
 fi
 #echo $name
