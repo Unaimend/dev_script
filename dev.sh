@@ -2,7 +2,7 @@
 #falls kein Projektname angegeben ist wird das erste Argument zum Projektnamen.
 
 #TODO: git, lua
-
+#TODO STH DOESNT WORK.
 
 sfml="false"
 
@@ -105,7 +105,7 @@ include_directories(include)
 
 # For the shared library:
 set ( PROJECT_LINK_LIBS libsfml-graphics.dylib libsfml-window.dylib libsfml-system.dylib)
-link_directories( .l/lib/)
+link_directories( ./lib/)
 
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES \"src/*.cpp\")
