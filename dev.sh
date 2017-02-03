@@ -3,6 +3,7 @@
 
 #TODO: git, lua
 #TODO STH DOESNT WORK.
+#MAnuelles make im ordner funktioniert allerdings ist irwas im ordner falsch
 
 sfml="false"
 
@@ -102,10 +103,10 @@ SET(CMAKE_CXX_FLAGS \"-std=c++14 -O0\")
 include_directories(include)
 
 
-
+link_directories( ./lib/)
 # For the shared library:
 set ( PROJECT_LINK_LIBS libsfml-graphics.dylib libsfml-window.dylib libsfml-system.dylib)
-link_directories( ./lib/)
+
 
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES \"src/*.cpp\")
