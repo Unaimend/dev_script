@@ -4,11 +4,10 @@ import tarfile
 import os
 from distutils.dir_util import copy_tree
 print(sys.argv)
+from sys import platform as _platform
 """
 	TODO:
-		Error checking of urlib....
-		Error check vom tar kram
-		\ni\n{\n\t << std::endl;\n}
+      look at deft file
 """
 
 mainCodeWithOutSfml = 	("#include <iostream>\n\n\n\n"
@@ -89,6 +88,15 @@ sfml = False
 """Which plattofrm am I on?"""
 mac = True
 linux = False
+
+
+if _platform == "linux" or _platform == "linux2":
+        linux = True
+elif _platform == "darwin":
+        mac = True
+elif _platform == "win32":
+        print("Windows is not supported")
+        exit(-1)
 
 
 if "-sfml" in sys.argv:
