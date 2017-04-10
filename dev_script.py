@@ -13,7 +13,7 @@ from sys import platform as _platform
 mainCodeWithOutSfml = 	("#include <iostream>\n\n\n\n"
 						 "int main(int arc, char* argv[])\n"
 						 "{\n"
-						 "    std::cout << \"HELLO WORLD\" << std::endl\n"
+						 "    std::cout << \"HELLO WORLD\" << std::endl\n;"
 						 "}\n"
 						)
 mainCodeWithSfml =		(	"#include <SFML/Graphics.hpp>\n\n\n\n"
@@ -57,6 +57,18 @@ set ( PROJECT_LINK_LIBS libsfml-graphics.so libsfml-window.so libsfml-system.so)
 file(GLOB SOURCES "src/*.cpp")
 add_executable($name ${SOURCES})
 target_link_libraries($name ${PROJECT_LINK_LIBS} )
+""".replace("$name", projectName)
+
+CmakeWithoutSfml = """cmake_minimum_required(VERSION 2.8.9)
+project ($name)
+SET(CMAKE_CXX_FLAGS "-std=c++14 -O0")
+include_directories(include)
+
+# For the shared library:
+
+#However, the file(GLOB...) allows for wildcard additions:
+file(GLOB SOURCES "src/*.cpp")
+add_executable($name ${SOURCES})
 """.replace("$name", projectName)
 
 
@@ -152,9 +164,8 @@ if sfml == True:
     cmakeFile = open("CMakeLists.txt","w+")
     cmakeFile.write(macCmakeSfml)
 else:
-    #different cmake
-    print("Nicht implementiert")
-
+    cmakeFile = open("CMakeLists.txt","w+")
+    cmakeFile.write(CmakeWithoutSfml)
 
 
 
