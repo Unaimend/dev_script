@@ -134,6 +134,7 @@ else:
 
 
 os.chdir("src")
+
 mainFile = open("main.cpp","w+")
 if sfml == True:
 	mainFile.write(mainCodeWithSfml)
@@ -153,7 +154,6 @@ if sfml == True:
 else:
     #different cmake
     print("Nicht implementiert")
-
 
 
 
