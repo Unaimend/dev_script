@@ -22,6 +22,10 @@ class CppAutomation(object):
     mac = False
     windows = False
 
+    # Wofür war das?
+    sfmlName = "SFML-2.4.1"
+    macSfmlName = "SFML-2.4.1-osx-clang"
+
 
     def __init__(self, project_name):
         # 2-Dimensionales Array für die Verwaltung von platttformspezifischen Daten wie z.B. Download Addressen
@@ -33,9 +37,7 @@ class CppAutomation(object):
         #downloadGitState = False
         #downloadLuaState = False
 
-        # Wofür war das?
-        sfmlName = "SFML-2.4.1"
-        macSfmlName = "SFML-2.4.1-osx-clang"
+
 
         self.project_name = project_name;
 
@@ -259,8 +261,9 @@ class CppAutomationGui(object):
         ).grid(row=2, column=1)
 
         self.project_name_box = tk.Text(
-            self.project_window, height=1, width=30, relief="sunken", variable=self.project_name,borderwidth=2
+            self.project_window, height=1, width=30, relief="sunken", borderwidth=2
         )
+        
         self.project_name_box.grid(row=1, column=2, sticky=tk.W)
 
         self.project_name_label = tk.Label(
@@ -305,14 +308,14 @@ class CppAutomationGui(object):
         else:
             mainFile.write(self.automation.os_main_code["NOTHING"])
         os.chdir("..")
-        if self.automation.download_sfml_state == True:
-            if CppAutomation.linux == True:
-                copy_tree("./" + self.automation.sfmlName + "/include/", "./include/")
-                copy_tree("./" + self.automation.sfmlName + "/lib/", "./lib/SFML/")
+        if self.automation.download_sfml_state:
+            if CppAutomation.linux:
+                # BUG Warum sieht das nicht so aus wie bei mac(1. copy_tree aufruf)?
+                copy_tree("./" + CppAutomation.sfmlName + "/include/", "./include/")
+                copy_tree("./" + CppAutomation.sfmlName + "/lib/", "./lib/SFML/")
                 cmakeFile = open("CMakeLists.txt", "w+")
                 cmakeFile.write(self.automation.os_cmake["LINUX"]["SFML"])
-            elif CppAutomation.mac == True :
-                print(os.getcwd())
+            elif CppAutomation:
                 copy_tree("./" + self.automation.macSfmlName + "/include/", os.getcwd() + "/include/")
                 copy_tree("./" + self.automation.macSfmlName + "/lib/", "./lib/SFML/")
                 cmakeFile = open("CMakeLists.txt", "w+")
