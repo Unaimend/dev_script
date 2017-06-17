@@ -28,8 +28,7 @@ class CppAutomation(object):
 
 
     def __init__(self, project_name):
-        # 2-Dimensionales Array für die Verwaltung von platttformspezifischen Daten wie z.B. Download Addressen
-        # oder CMake-Datein
+       
 
 
 
@@ -41,6 +40,8 @@ class CppAutomation(object):
 
         self.project_name = project_name;
 
+ 		# 2-Dimensionales Array für die Verwaltung von platttformspezifischen Daten wie z.B. Download Addressen
+        # oder CMake-Datein
         self.os_download_address = {}
         self.os_download_address["MAC"] = {}
         self.os_download_address["LINUX"] = {}
