@@ -316,7 +316,7 @@ class CppAutomationGui(object):
                 copy_tree("./" + CppAutomation.sfmlName + "/lib/", "./lib/SFML/")
                 cmakeFile = open("CMakeLists.txt", "w+")
                 cmakeFile.write(self.automation.os_cmake["LINUX"]["SFML"])
-            elif CppAutomation:
+            elif CppAutomation.mac:
                 copy_tree("./" + self.automation.macSfmlName + "/include/", os.getcwd() + "/include/")
                 copy_tree("./" + self.automation.macSfmlName + "/lib/", "./lib/SFML/")
                 cmakeFile = open("CMakeLists.txt", "w+")
