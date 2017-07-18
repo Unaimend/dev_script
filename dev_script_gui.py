@@ -28,10 +28,6 @@ class CppAutomation(object):
 
 
     def __init__(self, project_name):
-       
-
-
-
         self.download_sfml_state = False
         #downloadGitState = False
         #downloadLuaState = False
@@ -63,12 +59,12 @@ class CppAutomation(object):
                                         project ($name)
                                         SET(CMAKE_CXX_FLAGS "-std=c++14 -O0")
                                         include_directories(include)
-                                        
-                                        
+
+
                                         # For the shared library:
                                         link_directories( ./lib/SFML/)
                                         set ( PROJECT_LINK_LIBS libsfml-graphics.dylib libsfml-window.dylib libsfml-system.dylib)
-                                        
+
                                         #However, the file(GLOB...) allows for wildcard additions:
                                         file(GLOB SOURCES "src/*.cpp")
                                         add_executable($name ${SOURCES})
@@ -80,8 +76,6 @@ class CppAutomation(object):
                                         project ($name)
                                         SET(CMAKE_CXX_FLAGS "-std=c++14 -O0")
                                         include_directories(include)
-                                        
-                                        
                                         # For the shared library:
                                         link_directories( ./lib/SFML/)
                                         set ( PROJECT_LINK_LIBS libsfml-graphics.so libsfml-window.so libsfml-system.so)
@@ -121,7 +115,7 @@ class CppAutomation(object):
                                     "        sf::Event event;\n"
                                     "        while (window.pollEvent(event))\n"
                                     "        {\n"
-                                    "            if (event.type == s^f::Event::Closed)\n"
+                                    "            if (event.type == sf::Event::Closed)\n"
                                     "            {\n"
                                     "                window.close();\n"
                                     "            }\n"
@@ -168,7 +162,7 @@ class CppAutomation(object):
             os.remove("sfml")
         elif CppAutomation.linux:
             print("I am on linux\n")
-            urllib.request.urlretrieve(self.os_download_address["MAC"]["SFML"], "sfml")
+            urllib.request.urlretrieve(self.os_download_address["LINUX"]["SFML"], "sfml")
             t = tarfile.open("sfml", 'r')
             t.extractall('.')
             os.remove("sfml")
