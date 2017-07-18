@@ -14,9 +14,9 @@ from enum import Enum
 # Uses PEP8 style guide
 
 
-#TODO Der Projektname wird nicht übernommen, da die Textersetzung für den Projektnamen bereits
-#TODO im Konstruktor der Klasse CppAutomation passiert(Er wird auf Default gesetzt)
-
+# TODO Der Projektname wird nicht übernommen, da die Textersetzung für den Projektnamen bereits
+# TODO im Konstruktor der Klasse CppAutomation passiert(Er wird auf Default gesetzt)
+# TODO Solve problem with missing libjpeg8 on debian
 class CppAutomation(object):
     linux = False
     mac = False
