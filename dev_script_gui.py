@@ -16,7 +16,7 @@ from enum import Enum
 
 # TODO Der Projektname wird nicht übernommen, da die Textersetzung für den Projektnamen bereits
 # TODO im Konstruktor der Klasse CppAutomation passiert(Er wird auf Default gesetzt)
-# TODO Solve problem with missing libjpeg8 on debian
+# TODO Solve problem with missing libjpeg8 on debian(SFML problem)
 class CppAutomation(object):
     linux = False
     mac = False
@@ -79,7 +79,6 @@ class CppAutomation(object):
                                         # For the shared library:
                                         link_directories( ./lib/SFML/)
                                         set ( PROJECT_LINK_LIBS libsfml-graphics.so libsfml-window.so libsfml-system.so)
-                                        
                                         #However, the file(GLOB...) allows for wildcard additions:
                                         file(GLOB SOURCES "src/*.cpp")
                                         add_executable($name ${SOURCES})
@@ -91,9 +90,7 @@ class CppAutomation(object):
                                         project ($name)
                                         SET(CMAKE_CXX_FLAGS "-std=c++14 -O0")
                                         include_directories(include)
-                                        
                                         # For the shared library:
-                                        
                                         #However, the file(GLOB...) allows for wildcard additions:
                                         file(GLOB SOURCES "src/*.cpp")
                                         add_executable($name ${SOURCES})
@@ -104,7 +101,7 @@ class CppAutomation(object):
         self.os_main_code = {}
         self.os_main_code["SFML"] = {}
         self.os_main_code["NOTHING"] = {}
-
+        # TODO Use multine string
         self.os_main_code["SFML"] = (
                                     "#include <SFML/Graphics.hpp>\n\n\n\n"
                                     "int main()\n"
@@ -235,7 +232,7 @@ class CppAutomationGui(object):
     def new_project(self):
         """
         Öffnet das Fenster welches die Projektoptionen anzeigt
-        :return: 
+        :return:
         """
         self.ask_dir()
         self.project_window = tk.Toplevel(self.root)
@@ -258,7 +255,7 @@ class CppAutomationGui(object):
         self.project_name_box = tk.Text(
             self.project_window, height=1, width=30, relief="sunken", borderwidth=2
         )
-        
+
         self.project_name_box.grid(row=1, column=2, sticky=tk.W)
 
         self.project_name_label = tk.Label(
@@ -268,8 +265,7 @@ class CppAutomationGui(object):
 
     def go(self):
         """
-        
-        :return: 
+        :return:
         """
         #TODO Checken ob Pfad schon exisitiert
         #TODO Gehoert das Alles hier hin? Seperate Klasse? Eigene Funktion?

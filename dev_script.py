@@ -93,7 +93,7 @@ target_link_libraries($name ${PROJECT_LINK_LIBS} )
 
 LinuxSfmlAdress = "http://www.sfml-dev.org/files/SFML-2.4.1-linux-gcc-64-bit.tar.gz"
 MacSfmlAdress = "http://www.sfml-dev.org/files/SFML-2.4.1-osx-clang.tar.gz"
-
+# Mit regex extrahieren
 sfmlName = "SFML-2.4.1"
 macSfmlName ="SFML-2.4.1-osx-clang"
 sfml = False
